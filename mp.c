@@ -20,3 +20,12 @@ void clearScreen() {
     printf("Hello, Welcome to CSOPESY commandline!\n");
     printf("Type 'exit' to quit, 'clear' to clear the screen\n");
 }
+
+// Function to handle the commands
+void handleCommand(const char *command) {
+    if (strcmp(command, "initialize") == 0) {
+        printf("initialize command recognized.\n");
+    } else if (strcmp(command, "screen") == 0) {
+        printf("screen command recognized.\n");
+    } else if (strcmp(command, "scheduler-test") == 0) {
+        printf("scheduler-test command recognized.\n");

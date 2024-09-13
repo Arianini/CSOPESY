@@ -24,15 +24,15 @@ void clearScreen() {
 // Function to handle the commands
 void handleCommand(const char *command) {
     if (strcmp(command, "initialize") == 0) {
-        printf("initialize command recognized. Doing something.\n");
+        printf("Initialize command recognized.\n");
     } else if (strcmp(command, "screen") == 0) {
-        printf("screen command recognized. Doing something.\n");
+        printf("Screen command recognized.\n");
     } else if (strcmp(command, "scheduler-test") == 0) {
-        printf("scheduler-test command recognized. Doing something.\n");
+        printf("Scheduler-test command recognized.\n");
     } else if (strcmp(command, "scheduler-stop") == 0) {
-        printf("scheduler-stop command recognized. Doing something.\n");
+        printf("Scheduler-stop command recognized.\n");
     } else if (strcmp(command, "report-util") == 0) {
-        printf("report-util command recognized. Doing something.\n");
+        printf("Report-util command recognized.\n");
     } else if (strcmp(command, "clear") == 0) {
         clearScreen();
     } else if (strcmp(command, "exit") == 0) {

@@ -42,3 +42,23 @@ void handleCommand(const char *command) {
         printf("Command not recognized.\n");
     }
 }
+
+int main() {
+    char command[100];
+
+    // Print the header
+    clearScreen();
+
+    // Main loop to accept user input
+    while (1) {
+        printf("Enter a command: ");
+        fgets(command, sizeof(command), stdin);
+        // Remove newline character from fgets
+        command[strcspn(command, "\n")] = 0;
+
+        // Handle the command
+        handleCommand(command);
+    }
+
+    return 0;
+}

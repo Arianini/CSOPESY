@@ -3,7 +3,7 @@
 #include <string.h>
 #include <time.h>
 
-#define MAX_SCREENS 10  // Define a maximum number of screens to handle
+#define MAX_SCREENS 10  // Max number of screens to handle
 
 // Structure to store screen information
 typedef struct {

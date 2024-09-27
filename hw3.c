@@ -3,6 +3,15 @@
 #include <string.h>
 #include <time.h>
 
+// Define color codes
+#define RED "\x1B[31m"
+#define GREEN "\x1B[32m"
+#define YELLOW "\x1B[33m"
+#define BLUE "\x1B[34m"
+#define MAGENTA "\x1B[35m"
+#define CYAN "\x1B[36m"
+#define RESET "\x1B[0m"
+
 #define MAX_SCREENS 10  // Max number of screens to handle
 
 // Structure to store screen information
@@ -32,16 +41,16 @@ void clearScreen() {
 // Function to display the process screen
 void displayScreen(Screen* screen) {
     clearScreen();
-    printf("Process: %s\n", screen->name);
-    printf("ID: %d\n", screen->id);  // Use the unique ID stored for each screen
-    printf("Current instruction line: %d/%d\n", screen->current_instruction, screen->total_instructions);
-    printf("Screen created on: %s\n", screen->timestamp);  // Display the creation timestamp
+    printf(CYAN "Process: %s\n" RESET, screen->name);
+    printf(GREEN "ID: %d\n" RESET, screen->id);  // Use the unique ID stored for each screen
+    printf(YELLOW "Current instruction line: %d/%d\n" RESET, screen->current_instruction, screen->total_instructions);
+    printf(MAGENTA "Screen created on: %s\n" RESET, screen->timestamp);  // Display the creation timestamp
 }
 
 // Function to create a new screen with the given name
 void createScreen(char* name) {
     if (screen_count >= MAX_SCREENS) {
-        printf("Maximum screen limit reached.\n");
+        printf(RED "Maximum screen limit reached.\n" RESET);
         return;
     }
 
@@ -74,7 +83,7 @@ void resumeScreen(char* name) {
     }
 
     if (!found) {
-        printf("Screen '%s' not found.\n", name);
+        printf(RED "Screen '%s' not found.\n" RESET, name);
         if (in_main_menu) {
             printf("Enter a command: ");
         } else {
@@ -88,15 +97,15 @@ void resumeScreen(char* name) {
 // Function to display the main menu
 void displayMainMenu() {
     clearScreen();
-    printf("  _____    _____    ____    _____   ______   _____   __     __\n");
-    printf(" / ____|  / ____|  / __ \\  |  __ \\ |  ____| / ____|  \\ \\   / /\n");
-    printf("| |      | (___   | |  | | | |__) || |__   | (___     \\ \\_/ / \n");
-    printf("| |       \\___ \\  | |  | | |  ___/ |  __|   \\___ \\     \\   /  \n");
-    printf("| |____   ____) | | |__| | | |     | |____  ____) |     | |   \n");
-    printf(" \\_____| |_____/   \\____/  |_|     |______||_____/      |_|   \n");
+    printf(GREEN "  _____    _____    ____    _____   ______   _____   __     __\n" RESET);
+    printf(GREEN " / ____|  / ____|  / __ \\  |  __ \\ |  ____| / ____|  \\ \\   / /\n" RESET);
+    printf(GREEN "| |      | (___   | |  | | | |__) || |__   | (___     \\ \\_/ / \n" RESET);
+    printf(GREEN "| |       \\___ \\  | |  | | |  ___/ |  __|   \\___ \\     \\   /  \n" RESET);
+    printf(GREEN "| |____   ____) | | |__| | | |     | |____  ____) |     | |   \n" RESET);
+    printf(GREEN " \\_____| |_____/   \\____/  |_|     |______||_____/      |_|   \n" RESET);
 
-    printf("Hello, Welcome to CSOPESY commandline!\n");
-    printf("Type 'exit' to return to the main menu, 'clear' to clear the screen\n");
+    printf(CYAN "Hello, Welcome to CSOPESY commandline!\n" RESET);
+    printf(YELLOW "Type 'exit' to return to the main menu, 'clear' to clear the screen\n" RESET);
     printf("Enter a command: ");
     in_main_menu = 1;  // Set flag that we are in the main menu
 }
@@ -104,23 +113,23 @@ void displayMainMenu() {
 // Function to handle the commands in the main menu
 void handleMainMenuCommand(const char* command) {
     if (strcmp(command, "initialize") == 0) {
-        printf("Initialize command recognized. Doing something.\n");
+        printf(GREEN "Initialize command recognized. Doing something.\n" RESET);
     } else if (strcmp(command, "screen") == 0) {
-        printf("Screen command recognized. Doing something.\n");
+        printf(GREEN "Screen command recognized. Doing something.\n" RESET);
     } else if (strcmp(command, "scheduler-test") == 0) {
-        printf("Scheduler-test command recognized. Doing something.\n");
+        printf(GREEN "Scheduler-test command recognized. Doing something.\n" RESET);
     } else if (strcmp(command, "scheduler-stop") == 0) {
-        printf("Scheduler-stop command recognized. Doing something.\n");
+        printf(GREEN "Scheduler-stop command recognized. Doing something.\n" RESET);
     } else if (strcmp(command, "report-util") == 0) {
-        printf("Report-util command recognized. Doing something.\n");
+        printf(GREEN "Report-util command recognized. Doing something.\n" RESET);
     } else if (strcmp(command, "clear") == 0) {
         clearScreen();
         displayMainMenu();
     } else if (strcmp(command, "exit") == 0) {
-        printf("Exiting program...\n");
+        printf(RED "Exiting program...\n" RESET);
         exit(0);
     } else {
-        printf("Command not recognized.\n");
+        printf(RED "Command not recognized.\n" RESET);
     }
 }
 
@@ -146,7 +155,7 @@ void handleCommand(char* command) {
         if (strcmp(command, "exit") == 0) {
             displayMainMenu();  // Return to the main menu
         } else {
-            printf("Only the 'exit' command works in this mode.\n");
+            printf(RED "Only the 'exit' command works in this mode.\n" RESET);
         }
     }
 }
@@ -169,4 +178,3 @@ int main() {
     }
 
     return 0;
-}

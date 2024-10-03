@@ -8,15 +8,16 @@ void clearScreen() {
     system("cls");
 }
 
+void header(){
+    printf("**************************************\n");
+    printf("* Displaying marquee console! *\n");
+    printf("**************************************\n");
+}
+
 // Function to display the entire format from the image
 void displayMarqueeWithDesign(const char *message, int x, int y, int consoleWidth, int consoleHeight) {
     clearScreen();
-
-    // Print the top part of the frame (header)
-    printf("******************************\n");
-    printf("* Displaying a marquee console!\n");
-    printf("******************************\n\n");
-
+    header();
     // Print empty lines to position the marquee in y-axis
     for (int i = 0; i < y; i++) {
         printf("\n");

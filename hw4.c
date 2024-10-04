@@ -14,6 +14,17 @@ typedef struct {
     char timestamp[50];  // Timestamp for when the screen was created
 } Screen;
 
+// Function prototypes
+void displayMainMenu();  
+void clearScreen();
+void displayCurrentTimestamp();
+void displayGpuInfo();
+void displayScreen(Screen* screen);
+void createScreen(char* name);
+void resumeScreen(char* name);
+void handleMainMenuCommand(const char* command);
+void handleCommand(char* command);
+
 // Array to store multiple screens
 Screen screens[MAX_SCREENS];
 int screen_count = 0;  // Track the number of created screens
@@ -29,6 +40,7 @@ void clearScreen() {
     #endif
 }
 
+// Function to display the current timestamp
 void displayCurrentTimestamp() {
     time_t t;
     struct tm* tm_info;
@@ -40,7 +52,7 @@ void displayCurrentTimestamp() {
     printf("%s\n\n", buffer);
 }
 
-// nvidia-smi style output with dummy data
+// Function to display dummy GPU information
 void displayGpuInfo() {
     clearScreen();
     // Displaying the current timestamp
@@ -77,7 +89,6 @@ void displayGpuInfo() {
     getchar();
     displayMainMenu();  // Go back to the main menu
 }
-
 
 // Function to display the process screen
 void displayScreen(Screen* screen) {

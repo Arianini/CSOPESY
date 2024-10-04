@@ -123,7 +123,6 @@ void handleInput(void* param) {
             if (ch == '\r') { // Enter key
                 // When Enter is pressed, process the command
                 printf("\nCommand processed in MARQUEE_CONSOLE: %s\n", command);
-                printf("Entered command. C doing something.\n");  // Confirmation message
                 command[0] = '\0';  // Reset the command buffer
                 displayCommandInput(command); // Display the prompt again with empty command
             } else if (ch == '\b') { // Backspace key

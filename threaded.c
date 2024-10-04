@@ -28,8 +28,8 @@ void clearScreen() {
 
 // Function to display the prompt and the user input
 void displayCommandInput(const char *command) {
-    clearLine(consoleHeight - 2);  
-    printf("Enter a command for MARQUEE_CONSOLE: %s", command); 
+    clearLine(consoleHeight - 2);  // Clear the line for input
+    printf("Enter a command for MARQUEE_CONSOLE: %s", command); // Display the prompt and the command together
 }
 
 // Function to display the entire format from the image
@@ -53,11 +53,12 @@ void displayMarqueeWithDesign(const char *message, int x, int y, int consoleWidt
     printf("%s\n", message);
 
     // Print the static bottom section
-    for (int i = 0; i < consoleHeight - y - 7; i++) {
+    for (int i = 0; i < consoleHeight - y - 6; i++) {  // Adjusted to reduce an extra line
         printf("\n");
     }
 
-    printf("Enter a command for MARQUEE_CONSOLE:\n");
+    // Display the command input prompt with any existing command
+    displayCommandInput(command);
 }
 
 // Function to get the console's current width and height
@@ -121,14 +122,16 @@ void handleInput(void* param) {
             char ch = _getch();
             if (ch == '\r') { // Enter key
                 // When Enter is pressed, process the command
-                printf("\nCommand processed in MARQUEE_CONSOLE: %s", command);
-                printf("Entered command. C doing something.\n");
+                printf("\nCommand processed in MARQUEE_CONSOLE: %s\n", command);
+                printf("Entered command. C doing something.\n");  // Confirmation message
                 command[0] = '\0';  // Reset the command buffer
+                displayCommandInput(command); // Display the prompt again with empty command
             } else if (ch == '\b') { // Backspace key
                 // Handle backspace
                 int len = strlen(command);
                 if (len > 0) {
                     command[len - 1] = '\0';  // Remove the last character
+                    displayCommandInput(command); // Update display with the backspaced command
                 }
             } else {
                 // Add typed character to command buffer
@@ -136,7 +139,7 @@ void handleInput(void* param) {
                 if (len < sizeof(command) - 1) {
                     command[len] = ch;
                     command[len + 1] = '\0';
-                    displayCommandInput(command); // Update the current command being typed
+                    displayCommandInput(command); // Update display with the new character added
                 }
             }
         }
@@ -144,6 +147,7 @@ void handleInput(void* param) {
         Sleep(50); // Adjust for smoother input polling
     }
 }
+
 
 int main() {
     // Get initial console size

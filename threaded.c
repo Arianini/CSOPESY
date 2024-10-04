@@ -26,6 +26,12 @@ void clearScreen() {
     system("cls");
 }
 
+// Function to display the prompt and the user input
+void displayCommandInput(const char *command) {
+    clearLine(consoleHeight - 2);  
+    printf("Enter a command for MARQUEE_CONSOLE: %s", command); 
+}
+
 // Function to display the entire format from the image
 void displayMarqueeWithDesign(const char *message, int x, int y, int consoleWidth, int consoleHeight) {
     clearScreen();
@@ -115,7 +121,8 @@ void handleInput(void* param) {
             char ch = _getch();
             if (ch == '\r') { // Enter key
                 // When Enter is pressed, process the command
-                printf("\nCommand processed in MARQUEE_CONSOLE: %s\n", command);
+                printf("\nCommand processed in MARQUEE_CONSOLE: %s", command);
+                printf("Entered command. C doing something.\n");
                 command[0] = '\0';  // Reset the command buffer
             } else if (ch == '\b') { // Backspace key
                 // Handle backspace
@@ -129,12 +136,9 @@ void handleInput(void* param) {
                 if (len < sizeof(command) - 1) {
                     command[len] = ch;
                     command[len + 1] = '\0';
+                    displayCommandInput(command); // Update the current command being typed
                 }
             }
-
-            // Display the current command being typed
-            clearLine(consoleHeight - 2);  // Clear the input line
-            printf("Command: %s", command);
         }
 
         Sleep(50); // Adjust for smoother input polling

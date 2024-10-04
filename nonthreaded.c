@@ -129,10 +129,6 @@ int main() {
                     command[len + 1] = '\0';
                 }
             }
-
-            // Display the current command being typed
-            clearLine(consoleHeight - 2);  // Clear the input line
-            printf("Command: %s", command);
         }
 
         // Control the speed of the marquee

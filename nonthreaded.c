@@ -20,7 +20,7 @@ void clearScreen() {
 }
 
 // Function to display the entire format from the image
-void displayMarqueeWithDesign(const char *message, int x, int y, int consoleWidth, int consoleHeight) {
+void displayMarqueeWithDesign(const char *message, int x, int y, int consoleWidth, int consoleHeight, const char* command) {
     clearScreen();
     printf("**************************************\n");
     printf("* Displaying marquee console! *\n");
@@ -84,7 +84,7 @@ int main() {
         getConsoleSize(&consoleWidth, &consoleHeight);
 
         // Display the marquee
-        displayMarqueeWithDesign(message, x, y, consoleWidth, consoleHeight);
+        displayMarqueeWithDesign(message, x, y, consoleWidth, consoleHeight, command);
 
         // Check for bounce on right or left edges and reverse direction if needed
         if (x + length >= consoleWidth) {

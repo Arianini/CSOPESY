@@ -44,7 +44,7 @@ void displayMarqueeWithDesign(const char *message, int x, int y, int consoleWidt
         printf("\n");
     }
 
-    printf("Enter a command for MARQUEE_CONSOLE:\n");
+    printf("Enter a command for MARQUEE_CONSOLE:");
 }
 
 // Function to get the console's current width and height

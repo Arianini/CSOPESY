@@ -40,11 +40,11 @@ void displayMarqueeWithDesign(const char *message, int x, int y, int consoleWidt
     printf("%s\n", message);
 
     // Print the static bottom section
-    for (int i = 0; i < consoleHeight - y - 7; i++) {
+    for (int i = 0; i < consoleHeight - y - 7; i++) {  
         printf("\n");
     }
 
-    printf("Enter a command for MARQUEE_CONSOLE:");
+    printf("Enter a command for MARQUEE_CONSOLE: %s", command);
 }
 
 // Function to get the console's current width and height
@@ -66,63 +66,58 @@ int main() {
     const char message[] = "Hello world in marquee!";
     int length = strlen(message);
     
-    int x = 0, y = 0;              // Starting position of the text (top-left corner)
-    int xDirection = 1, yDirection = 1;  // 1 for moving right/down, -1 for moving left/up
+    int x = 0, y = 0;			// Starting position of the text (top-left corner)
+    int xDirection = 1, yDirection = 1;		// 1 for moving right/down, -1 for moving left/up
     int consoleWidth, consoleHeight;
-    
-    // Variable for user input
     char command[100] = "";
 
-    // Get initial console size
     getConsoleSize(&consoleWidth, &consoleHeight);
 
     while (1) {
-        // Simulate heavy workload
+    	// Simulate heavy workload
         simulateHeavyWorkload();
-
+        
         // Get the current console size
         getConsoleSize(&consoleWidth, &consoleHeight);
-
+        
         // Display the marquee
         displayMarqueeWithDesign(message, x, y, consoleWidth, consoleHeight, command);
-
-        // Check for bounce on right or left edges and reverse direction if needed
+		
+		// Check for bounce on right or left edges and reverse direction if needed
         if (x + length >= consoleWidth) {
-            xDirection = -1;  // Move left if hitting the right edge
-            x = consoleWidth - length - 1;  // Prevent moving past the boundary
+            xDirection = -1; // Move left if hitting the right edge
+            x = consoleWidth - length - 1; // Prevent moving past the boundary
         } else if (x <= 0) {
-            xDirection = 1;   // Move right if hitting the left edge
-            x = 0;            // Prevent moving past the boundary
+            xDirection = 1; // Move right if hitting the left edge
+            x = 0; // Prevent moving past the boundary
         }
 
-        // Check for bounce on bottom or top edges and reverse direction if needed
-        if (y >= consoleHeight - 7) {  // Adjusted for frame and bottom text
-            yDirection = -1;  // Move up if hitting the bottom edge
-            y = consoleHeight - 7;  // Prevent moving past the boundary
+        if (y >= consoleHeight - 7) {	// Adjusted for frame and bottom text
+            yDirection = -1;	// Move up if hitting the bottom edge
+            y = consoleHeight - 7;	// Prevent moving past the boundary
         } else if (y <= 0) {
-            yDirection = 1;   // Move down if hitting the top edge
-            y = 0;            // Prevent moving past the boundary
+            yDirection = 1;	// Move down if hitting the top edge
+            y = 0;	// Prevent moving past the boundary
         }
-
-        // Update the position for the next frame (move diagonally)
+		
+		// Update the position for the next frame (move diagonally)
         x += xDirection;
         y += yDirection;
-
-        // Check if a key is pressed
+		
+		// Check if a key is pressed
         if (_kbhit()) {
             char ch = _getch();
             if (ch == '\r') { // Enter key
-                // When Enter is pressed, process the command
+            // When Enter is pressed, process the command
                 printf("\nCommand processed in MARQUEE_CONSOLE: %s\n", command);
-                command[0] = '\0';  // Reset the command buffer
+                command[0] = '\0'; // Reset the command buffer
             } else if (ch == '\b') { // Backspace key
-                // Handle backspace
                 int len = strlen(command);
                 if (len > 0) {
-                    command[len - 1] = '\0';  // Remove the last character
+                    command[len - 1] = '\0';	// Remove the last character
                 }
             } else {
-                // Add typed character to command buffer
+            	// Add typed character to command buffer
                 int len = strlen(command);
                 if (len < sizeof(command) - 1) {
                     command[len] = ch;
@@ -130,8 +125,8 @@ int main() {
                 }
             }
         }
-
-        // Control the speed of the marquee
+        
+		// Control the speed of the marquee
         Sleep(100); // Adjust for smoother/slower movement (current: 100ms delay)
     }
 

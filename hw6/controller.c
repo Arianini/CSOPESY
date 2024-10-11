@@ -17,6 +17,8 @@ void handleCommand(char* command) {
         char screen_name[50];
         sscanf(command, "screen -r %s", screen_name);
         resumeScreen(screen_name);
+    } else if (strncmp(command, "screen -ls", 10) == 0) {
+        listScreens();
     } else if (strncmp(command, "report-util", 11) == 0) {
         printProcessLogs(processes, process_count);
     } else if (strcmp(command, "exit") == 0) {
@@ -26,4 +28,3 @@ void handleCommand(char* command) {
         printf("Command '%s' not recognized.\n", command);
     }
 }
-

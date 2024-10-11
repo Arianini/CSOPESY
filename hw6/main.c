@@ -5,6 +5,7 @@
 int main() {
     char command[100];
     displayMainMenu();
+    initializeScheduler();
     while (1) {
         printf("Enter a command: ");
         fgets(command, sizeof(command), stdin);

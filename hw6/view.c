@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 void clearScreen() {
-    system("cls");  // Clears screen on Windows
+    system("cls");
 }
 
 void displayMainMenu() {
@@ -15,7 +15,7 @@ void displayMainMenu() {
     printf("| |____   ____) | | |__| | | |     | |____  ____) |     | |   \n");
     printf(" \\_____| |_____/   \\____/  |_|     |______||_____/      |_|   \n");
     printf("Hello, Welcome to CSOPESY commandline!\n");
-    printf("Type 'exit' to return to the main menu, 'clear' to clear the screen, or 'nvidia-smi' to display GPU info\n");
+    printf("Type 'exit' to return to the main menu, 'clear' to clear the screen.\n");
 }
 
 void printProcessLogs(Process processes[], int process_count) {
@@ -38,4 +38,3 @@ void printProcessLogs(Process processes[], int process_count) {
         }
     }
 }
-

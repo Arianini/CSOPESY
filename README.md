@@ -1,11 +1,11 @@
 # CSOPESY-S11
 How to run the OS Emulator
 
-Via cmd, enter the following command:
-gcc main.c model.c view.c controller.c -o <name of exe> -std=c99
+1. Via cmd, ednter the command: gcc main.c model.c view.c controller.c -o <name of exe> -std=c99
 
+2. Open the created executable file
 
-Refer to V18 folder for the final code for MC01
+Note: Refer to V18 folder for the final code for MC01
 
 ## DEVELOPERS
 Co Ciong, Sean

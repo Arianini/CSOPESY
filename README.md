@@ -9,6 +9,9 @@ Refer to V18 folder for the final code for MC01
 
 ## DEVELOPERS
 Co Ciong, Sean
+
 Lim, Alyanna,
+
 Mata, Maria Sarah Althea
+
 Ranada, Arianne

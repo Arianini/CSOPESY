@@ -1,5 +1,5 @@
 # CSOPESY-S11
-OS Emulator
+How to run the OS Emulator
 
 Via cmd, enter the following command:
 gcc main.c model.c view.c controller.c -o <name of exe> -std=c99

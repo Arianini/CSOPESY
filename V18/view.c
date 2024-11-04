@@ -95,18 +95,6 @@ void displayMainMenu() {
     printf("\033[0m"); // Reset text color
     printf("Hello, Welcome to CSOPESY commandline!\n");
     printf("Type 'help' to view available commands, 'exit' to quit, 'clear' to clear the screen\n");
-
-    // Print the loaded configuration details
-    printf("\033[1;32m"); // Set text to green
-    printf("\nConfiguration loaded:\n");
-    printf("  Number of CPUs: %d\n", NUM_CORES);
-    printf("  Scheduler Type: %s\n", config_schedulerType);
-    printf("  Quantum Cycles: %d\n", config_quantumCycles);
-    printf("  Batch Process Frequency: %.2f\n", config_batchProcessFreq);
-    printf("  Min Instructions: %d\n", config_minIns);
-    printf("  Max Instructions: %d\n", config_maxIns);
-    printf("  Delay Per Execution: %.2f\n", config_delayPerExec);
-    printf("\033[0m\n"); // Reset text color
 }
 
 void displayProcessLogs() {

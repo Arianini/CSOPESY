@@ -1,0 +1,2 @@
+Via cmd, enter the command below
+gcc main.c model.c view.c controller.c -o <name of exe> -std=c99

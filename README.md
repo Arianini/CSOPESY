@@ -9,6 +9,8 @@
 1. Via cmd, ednter the command: gcc main.c model.c view.c controller.c -o <name of exe> -std=c99
 
 2. Open the created executable file
+   
+3. Make sure to modify config.txt as needed before running the emulator
 
 Note: Refer to V18 folder for the final code for MC01 and MASTER folder for MCO2
 

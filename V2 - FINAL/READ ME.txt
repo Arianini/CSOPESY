@@ -1,0 +1,2 @@
+Via cmd, enter the command below
+gcc main.c model.c view.c controller.c -o ok -std=c99

@@ -10,7 +10,7 @@
 
 2. Open the created executable file
 
-Note: Refer to V18 folder for the final code for MC01 and MCO2 folder for MCO2
+Note: Refer to V18 folder for the final code for MC01 and V2 - FINAL folder for MCO2
 
 ## DEVELOPERS
 Co Ciong, Sean
